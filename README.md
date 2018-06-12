@@ -1,136 +1,53 @@
-# steamer-example
+# steamer-kit-library
 
-steamer starterkit 例子
+用于开发 `类库` 的脚手架
 
-## 开发
+
+## 快速启动
+
+* 推荐 >> 使用[steamerjs](https://steamerjs.github.io/docs/projectkits/Bootstrap.html)安装
+
 ```javascript
-npm i -g steamerjs
 
-steamer develop --kit [starterkit name xxx]
-// 或
-steamer develop -k [starterkit name xxx]
-// 命令运行后，会下载 [steamer-example](https://github.com/steamerjs/steamer-example)
+npm i -g steamerjs steamer-plugin-kit
 
-// 到 starterkit 开发目录下使用此命令，能使 starterkit 建立了一份全局的软链接
-cd steamer-xxx
-npm link
+steamer kit --add https://github.com/steamerjs/steamer-kit-library.git
 
-// 当你测试完后，请取消这个全局的软链接。
-npm unlink steamer-xxx
-
+steamer kit
 ```
 
-## 目录规范
+* 或直接从github clone 下来
 
-```javascript
-.steamer -- steamer 配置
-dist -- 生产环境代码
-|
-src -- 源代码
-|
-config -- 项目配置，用户主要关注配置，steamer不更新
-|------project.js -- 项目配置
-|------steamer.config.js -- 可由steamer生成，包括 webserver, cdn, port 等
-|      |
-|      |
-tools  -- 构建工具，steamer帮助更新
-|      |
-|——————script.js -- 生产环境或开发环境执行命令
-|——————webpack.base.js -- webpack 基础配置
-|
-package.json
+### 开发
+
+```bash
+npm run start
+
+// 打开链接，查看 demo
+localhost:9000
 ```
 
-## 命令规范
+> ps：此处在开启开发模式下默认会自动打开浏览器。
 
-```javascript
-// 开发环境
-npm start
+### 代码规范扫描
 
-// 生产环境
-npm run dist
-
-// 测试
-npm test
-
-// 规范代码命令
+```bash
 npm run lint
-
-// 模板生成
-steamer kit -t
 ```
 
-## 如何开发一个 steamer 规范的 starterkit
+> ps：此处的扫描在开发模式下是默认开启的，不需要手动执行lint。
 
-* 新建 `.steamer` 目录下的配置
+### 测试
 
-你需要新建一个配置文件于 `.steamer` 目录下。如果你的 starterkit 名称是 `steamer-example`，那么配置的文件名必须是 `steamer-example.js`。
-
-配置的例子如下：
-
-```javascript
-module.exports = {
-    files: [
-        "src",
-        "tools",
-        "config",
-        "README.md",
-        ".eslintrc.js",
-        ".eslintignore",
-        ".stylelintrc.js",
-        ".stylelintignore",
-        "postcss.config.js",
-        ".gitignore",
-        ".babelrc"
-    ],
-    options: [
-        {
-            type: 'input',
-            name: 'webserver',
-            message: 'html url(//localhost:9000/)',
-            default: "//localhost:9000/",
-        },
-        {
-            type: 'input',
-            name: 'cdn',
-            message: 'common cdn url(//localhost:8000/)',
-            default: "//localhost:8000/",
-        },
-        {
-            type: 'input',
-            name: 'port',
-            message: 'development server port(9000)',
-            default: '9000',
-        }
-    ]
-};
+```bash
+npm run karma
 ```
 
-1. `files` 
-    - 此配置是任何会被拷贝到开发目录下的文件夹或者文件。
+### 生产代码生成
 
-2. `options` 
-    - 我们使用 [inquirer](https://github.com/sboudrias/Inquirer.js) 去读取此配置，了解更多，可以去阅读 [inquirer](https://github.com/sboudrias/Inquirer.js)的文档。
-
-
-* 在 `package.json` 中指定一个主要文件，此文件是上面添加的 `.steamer` 目录下的配置，因为 [steamer-plugin-kit](https://github.com/SteamerTeam/steamer-plugin-kit) 的命令运行时候需要读取它。
-
-```javascript
-"main": "./.steamer/steamer-example.js",
+```bash
+// 使用 rollup 编译
+npm run dist
 ```
 
-同时，在 `keywords` 中添加关键词 "steamer starterkit"。
-
-```javascript
-"keywords": [
-    "steamer starterkit",
-    // other keywords
-]
-```
-
-
-## `Util` 库
-
-开发脚手架时，常常需要一些 `Util` 函数，帮助你快速开发，`Steamer` 提供以下 `Util` 库：
-
-* [steamer-webpack-utils](https://github.com/SteamerTeam/steamer-webpack-utils)
+## 文章参考
