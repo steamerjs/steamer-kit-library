@@ -1,7 +1,7 @@
 {
   "name": "steamer-kit-library",
   "version": "1.0.2",
-  "description": "steamer starter kit example",
+  "description": "steamer starterkit for library development based on rollup and karma",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "browser": "dist/index.umd.js",
@@ -20,7 +20,9 @@
   },
   "keywords": [
     "steamer starterkit",
-    "boilerplate"
+    "rollup",
+    "karma",
+    "library"
   ],
   "author": "steamerjs",
   "license": "MIT",
