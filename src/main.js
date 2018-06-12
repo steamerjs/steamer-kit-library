@@ -1,1 +1,5 @@
-console.log(123);
+export default {
+    init() {
+        return '123';
+    }
+};

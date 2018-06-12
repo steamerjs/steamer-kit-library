@@ -1,3 +1,9 @@
 'use strict';
 
-console.log(123);
+var main = {
+    init: function init() {
+        return '123';
+    }
+};
+
+module.exports = main;
