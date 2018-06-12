@@ -11,8 +11,10 @@
 
 npm i -g steamerjs steamer-plugin-kit
 
+// 下载脚手架到全局
 steamer kit --add https://github.com/steamerjs/steamer-kit-library.git
 
+// 选择并安装脚手架到项目中
 steamer kit
 ```
 
